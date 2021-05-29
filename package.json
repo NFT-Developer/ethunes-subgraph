@@ -4,6 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
+    "prep:rinkeby": "mustache network/rinkeby.json subgraph.template.yaml > subgraph.yaml && yarn codegen;",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ ehsueh/ethunes",
     "create-local": "graph create --node http://localhost:8020/ ehsueh/ethunes",
     "remove-local": "graph remove --node http://localhost:8020/ ehsueh/ethunes",
@@ -11,6 +12,7 @@
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.18.0",
-    "@graphprotocol/graph-ts": "0.18.0"
+    "@graphprotocol/graph-ts": "0.18.0",
+    "mustache": "^4.2.0"
   }
 }

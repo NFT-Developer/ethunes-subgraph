@@ -1,6 +1,62 @@
-type ExampleEntity @entity {
+# Contract address as ID
+type Ethunes @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  name: String
+  totalSupply: BigInt
+}
+
+# LicenseId (ERC11555 tokenId) as ID
+type License @entity {
+  id: ID!
+  song: Song!
+  categoryId: BigInt!
+  purposeId: BigInt! 
+  totalSupply: BigInt!
+}
+
+# SongId (ERC721 tokenId) as ID
+type Song @entity {
+  id: ID!
+  creator: Account!
+  owner: Account!
+  licenses: [License!] @derivedFrom(field: "song")
+}
+
+# LicenseId as ID (tracking only primary sales)
+type Listing @entity {
+  id: ID!
+  license: License!
+  amount: BigInt!
+  price: BigInt!
+  issuer: Account!
+}
+
+# TxnHash-timestamp as ID
+type Activity @entity {
+  id: ID!
+  action: String!
+  license: License
+  song: Song
+  from: Bytes!
+  to: Bytes!
+  price: BigInt!
+  txnHash: String!
+  timestamp: BigInt!
+}
+
+# Account EOA address as ID
+type Account @entity {
+  id: ID!
+  listings: [Listing!]  @derivedFrom(field: "issuer")
+  songsCreated: [Song!] @derivedFrom(field: "creator")
+  songsOwned: [Song!] @derivedFrom(field: "owner")
+  licensesOwned: [LicensesOwnership!] @derivedFrom(field: "account")
+}
+
+# LicenseId-Account as ID
+type LicensesOwnership @entity {
+  id: ID!
+  account: Account!
+  license: License!
+  quantity: BigInt!
 }
