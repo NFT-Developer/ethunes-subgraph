@@ -1,0 +1,56 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: EthunesLicenses
+    network: {{network}}
+    source:
+      address: "{{SongAddress}}"
+      abi: EthunesLicenses
+      startBlock: {{SongStartBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - TransferSingle
+        - TransferBatch
+        - ApprovalForAll
+      abis:
+        - name: EthunesLicenses
+          file: ./abis/EthunesLicenses.json
+      eventHandlers:
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+      file: ./src/mapping/license.ts
+
+  - kind: ethereum/contract
+    name: EthunesSongs
+    network: {{network}}
+    source:
+      address: "{{LicenseAddress}}"
+      abi: EthunesSongs
+      startBlock: {{LicenseStartBlock}}
+    mapping: 
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+        - ApprovalForAll
+      abis:
+        - name: EthunesSongs
+          file: ./abis/EthunesSongs.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+      file: ./src/mapping/song.ts
