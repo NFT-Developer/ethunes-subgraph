@@ -8,9 +8,9 @@ type Ethunes @entity {
 # LicenseId (ERC11555 tokenId) as ID
 type License @entity {
   id: ID!
-  song: Song!
-  categoryId: BigInt!
-  purposeId: BigInt! 
+  song: Song
+  categoryId: BigInt
+  purposeId: BigInt 
   totalSupply: BigInt!
 }
 
@@ -20,13 +20,18 @@ type Song @entity {
   creator: Account!
   owner: Account!
   licenses: [License!] @derivedFrom(field: "song")
+  metadataUrl: String!
+  title: String
+  description: String
+  url: String
+  image: String
 }
 
 # LicenseId as ID (tracking only primary sales)
 type Listing @entity {
   id: ID!
   license: License!
-  amount: BigInt!
+  amount: BigInt
   price: BigInt!
   issuer: Account!
 }
