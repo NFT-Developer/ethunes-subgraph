@@ -4,10 +4,10 @@
   "MarketplaceAddress": "0xefA4994c2a6Bd6A6060037D8DBA2Ed3B130A2fe2",
   "MarketplaceStartBlock": 8574800,
 
-  "SongAddress": "0xE89304A3c7382DF642957D89B4598376a2341e4C",
+  "SongAddress": "0x86B6147c3eCCCB3ea60341cb55F1C95e9Fd800B8",
   "SongStartBlock": 8672189,
 
-  "LicenseAddress": "0x5663B2F440d33288140fAC44e927ca74F84Db809",
+  "LicenseAddress": "0x5302D12fd9EcAF7adB580A8C2179e6A50604B89b",
   "LicenseStartBlock": 8672187
 
 }

@@ -20,6 +20,10 @@ type Song @entity {
   creator: Account!
   owner: Account!
   licenses: [License!] @derivedFrom(field: "song")
+  title: String
+  description: String
+  url: String
+  image: String
 }
 
 # LicenseId as ID (tracking only primary sales)

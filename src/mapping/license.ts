@@ -5,6 +5,7 @@ import {
   TransferBatch,
 } from "../../generated/EthunesLicenses/EthunesLicenses"
 import { ZERO_ADDRESS } from "../constants";
+import { loadOrCreateAccount } from "../factory/account";
 import { loadOrCreateLicense, loadOrCreateLicenseOwnership } from "../factory/license";
 
 export function handleApprovalForAll(event: ApprovalForAll): void {}
@@ -43,6 +44,9 @@ export function handleTransferBatch(event: TransferBatch): void {
 
 function handleTransfer(licenseId: BigInt, quantity: BigInt, from: Address, to: Address, txnHash: string, timestamp: BigInt): void {
 
+  let fromAccount = loadOrCreateAccount(from.toHexString())
+  let toAccount = loadOrCreateAccount(to.toHexString())
+
   let license = loadOrCreateLicense(licenseId)
   if (from == Address.fromString(ZERO_ADDRESS)) {
     // If from genesis, increase license counts
@@ -58,6 +62,8 @@ function handleTransfer(licenseId: BigInt, quantity: BigInt, from: Address, to: 
   let licenseFromOwnership = loadOrCreateLicenseOwnership(licenseFromOwnershipId)
   licenseFromOwnership.quantity.minus(quantity)
   
+  fromAccount.save()
+  toAccount.save()
   licenseOwnership.save()
   licenseFromOwnership.save()
   license.save()

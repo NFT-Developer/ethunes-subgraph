@@ -6,9 +6,9 @@ dataSources:
     name: EthunesLicenses
     network: {{network}}
     source:
-      address: "{{SongAddress}}"
+      address: "{{LicenseAddress}}"
       abi: EthunesLicenses
-      startBlock: {{SongStartBlock}}
+      startBlock: {{LicenseStartBlock}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -33,9 +33,9 @@ dataSources:
     name: EthunesSongs
     network: {{network}}
     source:
-      address: "{{LicenseAddress}}"
+      address: "{{SongAddress}}"
       abi: EthunesSongs
-      startBlock: {{LicenseStartBlock}}
+      startBlock: {{SongStartBlock}}
     mapping: 
       kind: ethereum/events
       apiVersion: 0.0.4

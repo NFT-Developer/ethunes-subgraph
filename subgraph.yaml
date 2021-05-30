@@ -6,9 +6,9 @@ dataSources:
     name: EthunesLicenses
     network: rinkeby
     source:
-      address: "0xE89304A3c7382DF642957D89B4598376a2341e4C"
+      address: "0x5302D12fd9EcAF7adB580A8C2179e6A50604B89b"
       abi: EthunesLicenses
-      startBlock: 8672189
+      startBlock: 8672187
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -33,9 +33,9 @@ dataSources:
     name: EthunesSongs
     network: rinkeby
     source:
-      address: "0x5663B2F440d33288140fAC44e927ca74F84Db809"
+      address: "0x86B6147c3eCCCB3ea60341cb55F1C95e9Fd800B8"
       abi: EthunesSongs
-      startBlock: 8672187
+      startBlock: 8672189
     mapping: 
       kind: ethereum/events
       apiVersion: 0.0.4
