@@ -54,3 +54,24 @@ dataSources:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
       file: ./src/mapping/song.ts
+
+  - kind: ethereum/contract
+    name: EthunesMarketplace
+    network: {{network}}
+    source:
+      address: "{{MarketplaceAddress}}"
+      abi: EthunesMarketplace
+      startBlock: {{MarketplaceStartBlock}}
+    mapping: 
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - EthunesLicenseAdded
+      abis:
+        - name: EthunesMarketplace
+          file: ./abis/EthunesMarketplace.json
+      eventHandlers:
+        - event: EthunesLicenseAdded(indexed uint256,indexed address,uint256)
+          handler: handleEthunesLicenseAdded
+      file: ./src/mapping/marketplace.ts

@@ -1,13 +1,13 @@
 {
   "network": "rinkeby",
 
-  "MarketplaceAddress": "0xefA4994c2a6Bd6A6060037D8DBA2Ed3B130A2fe2",
+  "MarketplaceAddress": "0x32d2A61A5da441C6834aD54B4f9B8Bd2a55844dF",
   "MarketplaceStartBlock": 8574800,
 
-  "SongAddress": "0x86B6147c3eCCCB3ea60341cb55F1C95e9Fd800B8",
+  "SongAddress": "0x9ebA2Da1977821d3894141Dd26cC11E6FFC43231",
   "SongStartBlock": 8672189,
 
-  "LicenseAddress": "0x5302D12fd9EcAF7adB580A8C2179e6A50604B89b",
+  "LicenseAddress": "0x56Bd4E7cF10431cAa8Bf2E78b8b3e87f77c5914d",
   "LicenseStartBlock": 8672187
 
 }

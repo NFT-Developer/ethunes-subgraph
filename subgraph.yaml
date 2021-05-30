@@ -6,7 +6,7 @@ dataSources:
     name: EthunesLicenses
     network: rinkeby
     source:
-      address: "0x5302D12fd9EcAF7adB580A8C2179e6A50604B89b"
+      address: "0x56Bd4E7cF10431cAa8Bf2E78b8b3e87f77c5914d"
       abi: EthunesLicenses
       startBlock: 8672187
     mapping:
@@ -33,7 +33,7 @@ dataSources:
     name: EthunesSongs
     network: rinkeby
     source:
-      address: "0x86B6147c3eCCCB3ea60341cb55F1C95e9Fd800B8"
+      address: "0x9ebA2Da1977821d3894141Dd26cC11E6FFC43231"
       abi: EthunesSongs
       startBlock: 8672189
     mapping: 
@@ -54,3 +54,24 @@ dataSources:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
       file: ./src/mapping/song.ts
+
+  - kind: ethereum/contract
+    name: EthunesMarketplace
+    network: rinkeby
+    source:
+      address: "0x32d2A61A5da441C6834aD54B4f9B8Bd2a55844dF"
+      abi: EthunesMarketplace
+      startBlock: 8574800
+    mapping: 
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - EthunesLicenseAdded
+      abis:
+        - name: EthunesMarketplace
+          file: ./abis/EthunesMarketplace.json
+      eventHandlers:
+        - event: EthunesLicenseAdded(indexed uint256,indexed address,uint256)
+          handler: handleEthunesLicenseAdded
+      file: ./src/mapping/marketplace.ts
